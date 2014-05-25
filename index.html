@@ -1,0 +1,235 @@
+<!Doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>RoomFly</title>
+  <meta name="description" content="RoomFly">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/datepicker.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="css/default.css"/>
+  <link rel="stylesheet" href="css/default.time.css"/>
+
+  <!-- JavaScript -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  <!-- // <script type="text/javascript" src="js/jquery-1.11.0.js"></script> -->
+  <!--Always include this in html file-->
+  <script src = 'js/bootstrap.js'></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+  <script src = 'js/picker.js'></script>
+  <script src = 'js/picker.time.js'></script>
+  <!-- // <script type="text/javascript" src="js/bootstrap-datepicker.js"></script> -->
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" style="color: #ffffff;"href="index.html">RoomFly</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Room Filters -->
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#filter-collapse">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#filter-collapse">
+            Filters
+          </a>
+        </h4>
+      </div>
+      <div id="filter-collapse" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <!-- Date Filter -->
+          <label class="control-label">Date: </label>
+          <div class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+            <input readonly="true" class="form-control" id="dp3" type="text" value="12-02-2012" required>
+          </div>
+          
+          <!-- Time Filter -->
+          <label class="control-label">Time: </label>
+          <div>
+            <label class="control-label">Start Time: </label>
+          </div>
+          <input class="form-control timepicker" id="start-time-picker" placeholder="">
+          <!-- <div class="col-xs-4">
+            <select class="col-xs-6 form-control timepicker" id="start-hour">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control timepicker" id="start-minute">
+              <option>00</option>
+              <option>30</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control timepicker" id="start-ampm">
+              <option>AM</option>
+              <option>PM</option>
+            </select>
+          </div> -->
+          
+          <div>
+            <label class="control-label">End Time: </label>
+          </div>
+          <input class="form-control timepicker" id="end-time-picker" placeholder="">
+          <!-- <div class="col-xs-4">
+            <select class="col-xs-6 form-control" id="end-hour">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control" id="end-minute">
+              <option>00</option>
+              <option>30</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select class="form-control" id="end-ampm">
+              <option>AM</option>
+              <option>PM</option>
+            </select>
+          </div> -->
+          <!-- Size Filter -->
+          <label class="control-label">Room Size (Optional): </label>
+          <select class="form-control" id="size">
+            <option>No Preference</option>
+            <option>Small = Up to 50</option>
+            <option>Medium = 50 - 100</option>
+            <option>Large = Larger than 100</option>
+          </select>
+          <label class='control-label'>Campus Location (Optional):</label>
+          <select class = 'form-control' id ='campus_location'>
+            <option>No Preference</option>
+            <option>North</option>
+            <option>South</option>
+          </select>
+
+          <!-- Facilities filters -->
+          <div class="checkbox-list">
+            <div>
+              <label class="control-label">Equipment(Optional): </label>
+            </div>
+            <div class="checkbox mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_av" id="av"> Projector and Audio
+              </label>
+            </div>
+            <div class="checkbox mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_computer" id="computer"> Computer Equipment
+              </label>
+            </div>
+            <div class="checkbox  mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_dvd" id="dvd"> DVD Player
+              </label>
+            </div>
+            <div class="checkbox  mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_dc" id="dc"> Document Camera
+              </label>
+            </div>
+            <div class="checkbox mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_lc" id="lc"> Laptop Connection
+              </label>
+            </div>
+            <div class="checkbox mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_microphone" id="microphone"> Microphone Equipment
+              </label>
+            </div>
+            <div class="checkbox mycheckbox">
+              <label class="myequi">
+                <input type="checkbox" value="equip_wifi" id="wifi"> WiFi
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button class="btn btn-primary" id="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reserve Room Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Reserve Room</h4>
+        </div>
+        <div class="modal-body">
+          <a href="https://25live.collegenet.com/northwestern/">Click here</a> to go to 25 Live and reserve the room.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Details Modal-->
+  <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Details</h4>
+        </div>
+        <div class="modal-body">
+          <div id="equipment">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Available Room List -->
+  <div class="list-group" id="room-list">
+    <a href="#" class="list-group-item active">
+      Available Rooms
+    </a>
+    <div id="banner" class="list-group-item list-group-item-warning"></div>
+  </div>
+
+  <script src = 'js/Query.js'></script>
+  <script src ='js/index.js'></script>
+  <!--script src ='js/updateDB.js'></script-->
+</body>
+</html>
